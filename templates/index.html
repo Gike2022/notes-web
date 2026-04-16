@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes-Web V2.0 | Cyberpunk Edition</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-panel">
+          <p class="eyebrow">Notes-Web V2.0</p>
+          <h1>私人本地笔记系统</h1>
+          <p class="sidebar-description">赛博朋克风格 · 本地存储 · 历史追溯</p>
+          <button id="new-note-btn" class="primary-button">新建笔记</button>
+        </div>
+
+        <section class="sidebar-section">
+          <div class="section-header">
+            <span>笔记列表</span>
+          </div>
+          <div id="notes-list" class="notes-list"></div>
+        </section>
+
+        <section class="sidebar-section">
+          <div class="section-header">
+            <span>历史记录</span>
+          </div>
+          <div id="history-list" class="history-list"></div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <section id="editor-shell" class="editor-shell">
+          <header class="editor-topbar">
+            <div class="editor-tabbar">
+              <div class="editor-tab">
+                <span class="tab-dot"></span>
+                <span id="current-file-name">untitled.md</span>
+              </div>
+            </div>
+            <div class="editor-actions" role="toolbar" aria-label="编辑器操作">
+              <div class="editor-action-group">
+                <button id="toggle-preview-btn" type="button" class="secondary-button editor-action-button" aria-pressed="false">预览</button>
+                <button id="save-note-btn" type="button" class="primary-button editor-action-button">保存</button>
+              </div>
+              <button id="delete-note-btn" type="button" class="danger-button editor-action-button">删除笔记</button>
+            </div>
+          </header>
+
+          <div class="title-row">
+            <input id="note-title" class="note-title-input" type="text" placeholder="输入笔记标题" />
+          </div>
+
+          <div class="editor-main">
+            <section class="editor-pane">
+              <div class="editor-pane-header">
+                <span>editor</span>
+                <span class="pane-hint">Markdown + fenced code block</span>
+              </div>
+              <textarea id="document-editor" hidden></textarea>
+            </section>
+
+            <aside id="preview-pane" class="preview-pane" hidden>
+              <div class="editor-pane-header">
+                <span>preview</span>
+                <span class="pane-hint">Markdown 渲染预览</span>
+              </div>
+              <div id="preview-content" class="preview-content"></div>
+            </aside>
+          </div>
+
+          <footer class="status-bar">
+            <span id="status-left">本地模式</span>
+            <span id="status-right">Markdown</span>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <div id="status-message" class="status-message" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/meta.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>

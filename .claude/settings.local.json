@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile \"/d/Project/Notes-Web/app.py\" \"/d/Project/Notes-Web/note_store.py\")",
+      "Bash(python \"/d/Project/Notes-Web/app.py\")"
+    ]
+  }
+}
